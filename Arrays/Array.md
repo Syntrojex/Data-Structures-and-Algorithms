@@ -379,3 +379,53 @@ void updateAtStart(int value)
 </details>
 
 ---
+
+<details>
+<summary><b>updateAtIndex(int index, int value)</b></summary>
+
+```cpp
+void updateAtIndex(int index, int value)
+{
+    if (index < 0 || index >= size)
+    {
+        cout << "Invalid Index!" << endl;
+        return;
+    }
+
+    arr[index] = value;
+}
+```
+
+### Complexity
+
+- Time: `O(1)`
+- Space: `O(1)`
+
+</details>
+
+---
+
+<details>
+<summary><b>updateAtEnd(int value)</b></summary>
+
+```cpp
+void updateAtEnd(int value)
+{
+    if (size == 0)
+    {
+        cout << "Array is Empty!" << endl;
+        return;
+    }
+
+    arr[size - 1] = value;
+}
+```
+
+### Complexity
+
+- Time: `O(1)`
+- Space: `O(1)`
+
+</details>
+
+---
