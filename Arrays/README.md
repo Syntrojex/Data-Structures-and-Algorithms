@@ -1,10 +1,24 @@
-# Dynamic Array — Complete C++ DSA Function Reference
+# Dynamic Array
 
-> A practical, copy-ready reference for a custom Dynamic Array in C++.
->
-> Includes **Insertion, Deletion, Update, Searching, Duplicate Removal, Reverse, Rotation, and Sorting Algorithms**.
+A complete **Dynamic Array implementation in C++** covering resizing, insertion, deletion, update, searching, duplicate removal, reversal, rotation, and multiple sorting algorithms — implemented from scratch using raw pointers.
 
----
+## 📌 Overview
+
+A Dynamic Array is a linear data structure that stores elements in **contiguous memory** and automatically grows when it runs out of space. Unlike a fixed-size array, it exposes `size` (how many elements are actually stored) separately from `capacity` (how much memory is currently allocated) — and doubles its capacity via `regrow()` whenever it fills up.
+
+```text
+capacity = 4
+size     = 3
+
+Index:    0     1     2     3
+Array: [ 10  |  20  |  30  |  _  ]
+                              ↑
+                        empty slot (capacity - size)
+```
+
+```text
+size == capacity  →  regrow() doubles capacity, copies old elements, frees old block
+```
 
 # 1. Class Structure
 
@@ -986,3 +1000,178 @@ void quickSort()
 </details>
 
 ---
+
+# 12. Display
+
+<details>
+<summary><b>display()</b> — Display current elements</summary>
+
+```cpp
+void display()
+{
+    if (size > 0)
+    {
+        cout << "\nArray is: [";
+
+        for (int i = 0; i < size; i++)
+        {
+            cout << arr[i];
+
+            if (i != size - 1)
+            {
+                cout << ",";
+            }
+        }
+
+        cout << "]" << endl;
+    }
+    else
+    {
+        cout << "Array is Empty!!" << endl;
+    }
+}
+```
+
+### Complexity
+
+- Time: `O(n)`
+- Space: `O(1)`
+
+</details>
+
+---
+
+# 13. Destructor
+
+<details>
+<summary><b>~Array()</b> — Release dynamic memory</summary>
+
+```cpp
+~Array()
+{
+    delete[] arr;
+    arr = nullptr;
+}
+```
+
+### Complexity
+
+- Time: `O(1)`
+- Space: `O(1)`
+
+</details>
+
+---
+
+# 14. Complete Function Checklist
+
+| # | Function | Category |
+|---|---|---|
+| 1 | `isFull()` | Helper |
+| 2 | `regrow()` | Dynamic Memory |
+| 3 | `shiftRight()` | Helper |
+| 4 | `shiftLeft()` | Helper |
+| 5 | `Array()` | Constructor |
+| 6 | `Array(int)` | Constructor |
+| 7 | `insertAtStart()` | Insertion |
+| 8 | `insertAtIndex()` | Insertion |
+| 9 | `insertAtEnd()` | Insertion |
+| 10 | `deleteFromStart()` | Deletion |
+| 11 | `deleteFromIndex()` | Deletion |
+| 12 | `deleteFromEnd()` | Deletion |
+| 13 | `updateAtStart()` | Update |
+| 14 | `updateAtIndex()` | Update |
+| 15 | `updateAtEnd()` | Update |
+| 16 | `linearSearch()` | Searching |
+| 17 | `binarySearch()` | Searching |
+| 18 | `removeDuplicates()` | Duplicate Removal |
+| 19 | `reverse()` | Reversal |
+| 20 | `rotateRight()` | Rotation |
+| 21 | `rotateLeft()` | Rotation |
+| 22 | `bubbleSort()` | Sorting |
+| 23 | `selectionSort()` | Sorting |
+| 24 | `insertionSort()` | Sorting |
+| 25 | `merge()` | Merge Sort Helper |
+| 26 | `mergeSortHelper()` | Merge Sort Helper |
+| 27 | `mergeSort()` | Sorting |
+| 28 | `partition()` | Quick Sort Helper |
+| 29 | `quickSortHelper()` | Quick Sort Helper |
+| 30 | `quickSort()` | Sorting |
+| 31 | `display()` | Utility |
+| 32 | `~Array()` | Destructor |
+
+---
+
+# 15. Complexity Cheat Sheet
+
+| Operation / Algorithm | Time |
+|---|---:|
+| Access by index | `O(1)` |
+| Update by index | `O(1)` |
+| Insert at end | `O(1)` average |
+| Insert at start | `O(n)` |
+| Insert at index | `O(n)` |
+| Delete from end | `O(1)` |
+| Delete from start | `O(n)` |
+| Delete from index | `O(n)` |
+| Linear Search | `O(n)` |
+| Binary Search | `O(log n)` |
+| Reverse | `O(n)` |
+| Rotate Left | `O(n)` |
+| Rotate Right | `O(n)` |
+| Remove Duplicates | `O(n²)` |
+| Bubble Sort | `O(n²)` |
+| Selection Sort | `O(n²)` |
+| Insertion Sort | `O(n²)` |
+| Merge Sort | `O(n log n)` |
+| Quick Sort | `O(n log n)` average |
+| Display | `O(n)` |
+
+---
+
+# 16. Important Concepts
+
+- `size` tells you **how many elements currently exist**.
+- `capacity` tells you **how much memory is currently allocated**.
+- Insertion increases `size`.
+- Deletion decreases `size`.
+- `regrow()` increases `capacity`.
+- `shiftRight()` is used mainly for insertion.
+- `shiftLeft()` is used mainly for deletion.
+- Binary Search only works correctly on a **sorted array**.
+- `reverse()` is also used as a helper for array rotation.
+- Sorting algorithms modify the array **in-place**, except Merge Sort which uses extra arrays.
+- Duplicate removal shown above works without requiring the array to be sorted.
+
+---
+
+# 17. Algorithm Categories
+
+### Basic Dynamic Array
+- Constructors
+- `isFull()`
+- `regrow()`
+- Shifting
+- Destructor
+
+### Modification
+- Insertion
+- Deletion
+- Update
+
+### Searching
+- Linear Search
+- Binary Search
+
+### Rearrangement
+- Reverse
+- Rotate Left
+- Rotate Right
+- Remove Duplicates
+
+### Sorting
+- Bubble Sort
+- Selection Sort
+- Insertion Sort
+- Merge Sort
+- Quick Sort
