@@ -665,3 +665,324 @@ void rotateLeft(int k)
 </details>
 
 ---
+
+# 11. Sorting Algorithms
+
+## Bubble Sort
+
+<details>
+<summary><b>bubbleSort()</b> — Repeatedly swap adjacent elements</summary>
+
+### Idea
+
+Larger elements gradually move toward the end of the array.
+
+### Code
+
+```cpp
+void bubbleSort()
+{
+    for (int i = 0; i < size - 1; i++)
+    {
+        bool swapped = false;
+
+        for (int j = 0; j < size - i - 1; j++)
+        {
+            if (arr[j] > arr[j + 1])
+            {
+                int temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+
+                swapped = true;
+            }
+        }
+
+        if (!swapped)
+        {
+            break;
+        }
+    }
+}
+```
+
+### Complexity
+
+- Best: `O(n)` with optimization
+- Average: `O(n²)`
+- Worst: `O(n²)`
+- Space: `O(1)`
+
+</details>
+
+---
+
+## Selection Sort
+
+<details>
+<summary><b>selectionSort()</b> — Find minimum and place it correctly</summary>
+
+### Idea
+
+Find the smallest element in the unsorted portion and put it at the current position.
+
+### Code
+
+```cpp
+void selectionSort()
+{
+    for (int i = 0; i < size - 1; i++)
+    {
+        int minIndex = i;
+
+        for (int j = i + 1; j < size; j++)
+        {
+            if (arr[j] < arr[minIndex])
+            {
+                minIndex = j;
+            }
+        }
+
+        if (minIndex != i)
+        {
+            int temp = arr[i];
+            arr[i] = arr[minIndex];
+            arr[minIndex] = temp;
+        }
+    }
+}
+```
+
+### Complexity
+
+- Best: `O(n²)`
+- Average: `O(n²)`
+- Worst: `O(n²)`
+- Space: `O(1)`
+
+</details>
+
+---
+
+## Insertion Sort
+
+<details>
+<summary><b>insertionSort()</b> — Insert each element into its correct position</summary>
+
+### Idea
+
+Maintains a sorted portion on the left and inserts each new element into its correct position.
+
+### Code
+
+```cpp
+void insertionSort()
+{
+    for (int i = 1; i < size; i++)
+    {
+        int key = arr[i];
+        int j = i - 1;
+
+        while (j >= 0 && arr[j] > key)
+        {
+            arr[j + 1] = arr[j];
+            j--;
+        }
+
+        arr[j + 1] = key;
+    }
+}
+```
+
+### Complexity
+
+- Best: `O(n)`
+- Average: `O(n²)`
+- Worst: `O(n²)`
+- Space: `O(1)`
+
+</details>
+
+---
+
+## Merge Sort
+
+<details>
+<summary><b>mergeSort()</b> — Divide and merge sorted halves</summary>
+
+### Helper: merge
+
+```cpp
+void merge(int start, int mid, int end)
+{
+    int leftSize = mid - start + 1;
+    int rightSize = end - mid;
+
+    int* left = new int[leftSize];
+    int* right = new int[rightSize];
+
+    for (int i = 0; i < leftSize; i++)
+    {
+        left[i] = arr[start + i];
+    }
+
+    for (int i = 0; i < rightSize; i++)
+    {
+        right[i] = arr[mid + 1 + i];
+    }
+
+    int i = 0;
+    int j = 0;
+    int k = start;
+
+    while (i < leftSize && j < rightSize)
+    {
+        if (left[i] <= right[j])
+        {
+            arr[k] = left[i];
+            i++;
+        }
+        else
+        {
+            arr[k] = right[j];
+            j++;
+        }
+
+        k++;
+    }
+
+    while (i < leftSize)
+    {
+        arr[k] = left[i];
+        i++;
+        k++;
+    }
+
+    while (j < rightSize)
+    {
+        arr[k] = right[j];
+        j++;
+        k++;
+    }
+
+    delete[] left;
+    delete[] right;
+}
+```
+
+### Recursive Helper
+
+```cpp
+void mergeSortHelper(int start, int end)
+{
+    if (start >= end)
+    {
+        return;
+    }
+
+    int mid = start + (end - start) / 2;
+
+    mergeSortHelper(start, mid);
+    mergeSortHelper(mid + 1, end);
+
+    merge(start, mid, end);
+}
+```
+
+### Public Function
+
+```cpp
+void mergeSort()
+{
+    if (size > 1)
+    {
+        mergeSortHelper(0, size - 1);
+    }
+}
+```
+
+### Complexity
+
+- Best: `O(n log n)`
+- Average: `O(n log n)`
+- Worst: `O(n log n)`
+- Space: `O(n)`
+
+</details>
+
+---
+
+## Quick Sort
+
+<details>
+<summary><b>quickSort()</b> — Partition around a pivot</summary>
+
+### Helper: partition
+
+```cpp
+int partition(int start, int end)
+{
+    int pivot = arr[end];
+
+    int i = start - 1;
+
+    for (int j = start; j < end; j++)
+    {
+        if (arr[j] < pivot)
+        {
+            i++;
+
+            int temp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = temp;
+        }
+    }
+
+    int temp = arr[i + 1];
+    arr[i + 1] = arr[end];
+    arr[end] = temp;
+
+    return i + 1;
+}
+```
+
+### Recursive Helper
+
+```cpp
+void quickSortHelper(int start, int end)
+{
+    if (start >= end)
+    {
+        return;
+    }
+
+    int pivotIndex = partition(start, end);
+
+    quickSortHelper(start, pivotIndex - 1);
+    quickSortHelper(pivotIndex + 1, end);
+}
+```
+
+### Public Function
+
+```cpp
+void quickSort()
+{
+    if (size > 1)
+    {
+        quickSortHelper(0, size - 1);
+    }
+}
+```
+
+### Complexity
+
+- Best: `O(n log n)`
+- Average: `O(n log n)`
+- Worst: `O(n²)`
+- Space: `O(log n)` average recursion stack
+- Worst recursion space: `O(n)`
+
+</details>
+
+---
