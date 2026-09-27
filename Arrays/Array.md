@@ -352,3 +352,30 @@ void deleteFromEnd()
 </details>
 
 ---
+
+# 6. Update
+
+<details>
+<summary><b>updateAtStart(int value)</b></summary>
+
+```cpp
+void updateAtStart(int value)
+{
+    if (size == 0)
+    {
+        cout << "Array is Empty!" << endl;
+        return;
+    }
+
+    arr[0] = value;
+}
+```
+
+### Complexity
+
+- Time: `O(1)`
+- Space: `O(1)`
+
+</details>
+
+---
