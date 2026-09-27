@@ -574,3 +574,32 @@ This version does not require the array to be sorted.
 </details>
 
 ---
+
+# 9. Reverse
+
+<details>
+<summary><b>reverse(int start, int end)</b> — Reverse a range</summary>
+
+```cpp
+void reverse(int start, int end)
+{
+    while (start < end)
+    {
+        int temp = arr[start];
+        arr[start] = arr[end];
+        arr[end] = temp;
+
+        start++;
+        end--;
+    }
+}
+```
+
+### Complexity
+
+- Time: `O(n)`
+- Space: `O(1)`
+
+</details>
+
+---
