@@ -429,3 +429,93 @@ void updateAtEnd(int value)
 </details>
 
 ---
+
+# 7. Searching
+
+<details>
+<summary><b>linearSearch(int value)</b> — Search in any array</summary>
+
+### Purpose
+
+Checks every element one by one until the required value is found.
+
+Works on both **sorted and unsorted arrays**.
+
+### Code
+
+```cpp
+int linearSearch(int value)
+{
+    for (int i = 0; i < size; i++)
+    {
+        if (arr[i] == value)
+        {
+            return i;
+        }
+    }
+
+    return -1;
+}
+```
+
+### Return Value
+
+- Returns index if found
+- Returns `-1` if not found
+
+### Complexity
+
+- Best: `O(1)`
+- Worst: `O(n)`
+- Space: `O(1)`
+
+</details>
+
+---
+
+<details>
+<summary><b>binarySearch(int value)</b> — Search in a sorted array</summary>
+
+### Important
+
+**Binary Search requires the array to be sorted.**
+
+### Code
+
+```cpp
+int binarySearch(int value)
+{
+    int start = 0;
+    int end = size - 1;
+
+    while (start <= end)
+    {
+        int mid = start + (end - start) / 2;
+
+        if (arr[mid] == value)
+        {
+            return mid;
+        }
+        else if (arr[mid] < value)
+        {
+            start = mid + 1;
+        }
+        else
+        {
+            end = mid - 1;
+        }
+    }
+
+    return -1;
+}
+```
+
+### Complexity
+
+- Best: `O(1)`
+- Worst: `O(log n)`
+- Space: `O(1)`
+
+</details>
+
+---
