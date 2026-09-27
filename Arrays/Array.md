@@ -519,3 +519,58 @@ int binarySearch(int value)
 </details>
 
 ---
+
+# 8. Duplicate Removal
+
+<details>
+<summary><b>removeDuplicates()</b> — Remove duplicate values</summary>
+
+### Purpose
+
+Removes duplicate values from an **unsorted array** while keeping the first occurrence.
+
+### Example
+
+```text
+Before:
+[10, 20, 10, 30, 20]
+
+After:
+[10, 20, 30]
+```
+
+### Code
+
+```cpp
+void removeDuplicates()
+{
+    for (int i = 0; i < size; i++)
+    {
+        for (int j = i + 1; j < size;)
+        {
+            if (arr[i] == arr[j])
+            {
+                shiftLeft(j);
+                size--;
+            }
+            else
+            {
+                j++;
+            }
+        }
+    }
+}
+```
+
+### Complexity
+
+- Time: `O(n²)`
+- Space: `O(1)`
+
+### Note
+
+This version does not require the array to be sorted.
+
+</details>
+
+---
