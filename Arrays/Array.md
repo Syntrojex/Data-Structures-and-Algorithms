@@ -603,3 +603,65 @@ void reverse(int start, int end)
 </details>
 
 ---
+
+# 10. Rotation
+
+<details>
+<summary><b>rotateRight(int k)</b> — Rotate array to the right</summary>
+
+### Code
+
+```cpp
+void rotateRight(int k)
+{
+    if (size <= 1)
+    {
+        return;
+    }
+
+    k = k % size;
+
+    reverse(0, size - 1);
+    reverse(0, k - 1);
+    reverse(k, size - 1);
+}
+```
+
+### Complexity
+
+- Time: `O(n)`
+- Space: `O(1)`
+
+</details>
+
+---
+
+<details>
+<summary><b>rotateLeft(int k)</b> — Rotate array to the left</summary>
+
+### Code
+
+```cpp
+void rotateLeft(int k)
+{
+    if (size <= 1)
+    {
+        return;
+    }
+
+    k = k % size;
+
+    reverse(0, k - 1);
+    reverse(k, size - 1);
+    reverse(0, size - 1);
+}
+```
+
+### Complexity
+
+- Time: `O(n)`
+- Space: `O(1)`
+
+</details>
+
+---
