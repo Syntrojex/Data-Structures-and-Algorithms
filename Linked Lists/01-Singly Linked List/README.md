@@ -122,7 +122,8 @@ it
 
 <details>
 <summary><b>operator!=(), begin(), end()</b> — Comparison and range endpoints</summary>
-
+<br>
+ 
 ```cpp
 bool operator!=(const Iterator& other)
 {
