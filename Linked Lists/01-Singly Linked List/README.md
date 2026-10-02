@@ -158,7 +158,7 @@ for (auto it = l1.begin(); it != l1.end(); ++it)
 # 3. Helper Functions
 
 <details>
-<summary><b>copyFrom(const SinglyLinkedList& other)</b> — Deep-copy every node <i>(added)</i></summary>
+<summary><b>copyFrom(const SinglyLinkedList& other)</b> — Deep-copy every node </summary>
 
 ### Purpose
 
@@ -188,7 +188,7 @@ void copyFrom(const SinglyLinkedList& other)
 ---
 
 <details>
-<summary><b>clear()</b> — Free every node <i>(added)</i></summary>
+<summary><b>clear()</b> — Free every node </summary>
 
 ### Purpose
 
