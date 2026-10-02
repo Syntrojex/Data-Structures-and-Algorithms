@@ -154,3 +154,68 @@ for (auto it = l1.begin(); it != l1.end(); ++it)
 </details>
 
 ---
+
+# 3. Helper Functions
+
+<details>
+<summary><b>copyFrom(const SinglyLinkedList& other)</b> — Deep-copy every node <i>(added)</i></summary>
+
+### Purpose
+
+Walks `other`'s nodes and re-inserts each value into `this` (already-empty) list. Used by the copy constructor and the copy assignment operator.
+
+### Code
+
+```cpp
+void copyFrom(const SinglyLinkedList& other)
+{
+    Node* otherTemp = other.head;
+    while (otherTemp != NULL)
+    {
+        insertAtEnd(otherTemp->data);
+        otherTemp = otherTemp->next;
+    }
+}
+```
+
+### Complexity
+
+- Time: `O(n)`
+- Space: `O(1)` auxiliary, excluding the copied nodes
+
+</details>
+
+---
+
+<details>
+<summary><b>clear()</b> — Free every node <i>(added)</i></summary>
+
+### Purpose
+
+Deletes every node and resets the list to empty. Used by the destructor and the copy assignment operator.
+
+### Code
+
+```cpp
+void clear()
+{
+    Node* current = head;
+    while (current != NULL)
+    {
+        Node* nextNode = current->next;
+        delete current;
+        current = nextNode;
+    }
+    head = NULL;
+    size = 0;
+}
+```
+
+### Complexity
+
+- Time: `O(n)`
+- Space: `O(1)`
+
+</details>
+
+---
