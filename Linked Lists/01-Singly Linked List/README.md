@@ -47,3 +47,110 @@ int size;
 - `size` → number of nodes currently in the list
 
 ---
+
+# 2. Custom Iterator
+
+<details>
+<summary><b>Iterator Constructor</b></summary>
+
+Stores the node from which traversal begins.
+
+```cpp
+Iterator(Node* node)
+{
+    current = node;
+}
+```
+
+</details>
+
+---
+
+<details>
+<summary><b>operator*()</b> — Dereference</summary>
+
+Returns the current node's data.
+
+```cpp
+int& operator*()
+{
+    return current->data;
+}
+```
+
+This allows:
+
+```cpp
+cout << *it;
+```
+
+</details>
+
+---
+
+<details>
+<summary><b>operator++()</b> — Advance</summary>
+
+Moves the iterator to the next node.
+
+```cpp
+Iterator& operator++()
+{
+    if (current != NULL)
+    {
+        current = current->next;
+    }
+    return *this;
+}
+```
+
+```text
+[10] → [20] → [30] → NULL
+ ↑
+it
+
+++it
+
+[10] → [20] → [30] → NULL
+         ↑
+         it
+```
+
+</details>
+
+---
+
+<details>
+<summary><b>operator!=(), begin(), end()</b> — Comparison and range endpoints</summary>
+
+```cpp
+bool operator!=(const Iterator& other)
+{
+    if (current != other.current)
+    {
+        return true;
+    }
+    return false;
+}
+
+Iterator begin()
+{
+    return Iterator(head);
+}
+
+Iterator end()
+{
+    return Iterator(NULL);
+}
+```
+
+Together they support:
+
+```cpp
+for (auto it = l1.begin(); it != l1.end(); ++it)
+    cout << *it;
+```
+
+</details>
+
+---
