@@ -89,7 +89,7 @@ cout << *it;
 ---
 
 <details>
-<summary><b>operator++()</b> — Advance</summary>
+<summary><b>operator++()</b> — Increments Iterator</summary>
 
 Moves the iterator to the next node.
 
