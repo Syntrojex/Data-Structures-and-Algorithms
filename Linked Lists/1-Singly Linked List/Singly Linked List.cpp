@@ -164,6 +164,12 @@ public:
 			return;
 		}
 
+		if (position == size + 1)
+		{
+			insertAtEnd(value);	
+			return;
+		}
+
 		Node* temp = head;
 		for (int i = 0; i < position - 1; i++)
 		{
