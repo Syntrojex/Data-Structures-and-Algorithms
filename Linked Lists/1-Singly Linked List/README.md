@@ -220,3 +220,77 @@ void clear()
 </details>
 
 ---
+
+# 4. Constructors
+
+<details>
+<summary><b>Default Constructor</b></summary>
+
+```cpp
+SinglyLinkedList()
+{
+    head = NULL;
+    size = 0;
+}
+```
+
+</details>
+
+---
+
+<details>
+<summary><b>Copy Constructor</b></summary>
+
+### Purpose
+
+The class manages raw pointers and already defines a destructor, so without this the compiler-generated shallow copy would let two lists share (and later double-delete) the same nodes — this is the "Rule of Three."
+
+### Code
+
+```cpp
+SinglyLinkedList(const SinglyLinkedList& other)
+{
+    head = NULL;
+    size = 0;
+    copyFrom(other);
+}
+```
+
+### Complexity
+
+- Time: `O(n)`
+- Space: `O(1)` auxiliary
+
+</details>
+
+---
+
+<details>
+<summary><b>Copy Assignment Operator</b> </summary>
+
+### Purpose
+
+Same Rule-of-Three reason as the copy constructor. Guards against self-assignment (`l1 = l1;`) before clearing and re-copying.
+
+### Code
+
+```cpp
+SinglyLinkedList& operator=(const SinglyLinkedList& other)
+{
+    if (this != &other)
+    {
+        clear();
+        copyFrom(other);
+    }
+    return *this;
+}
+```
+
+### Complexity
+
+- Time: `O(n)`
+- Space: `O(1)` auxiliary
+
+</details>
+
+---
