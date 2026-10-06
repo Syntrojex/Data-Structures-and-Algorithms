@@ -679,3 +679,167 @@ After:
 </details>
 
 ---
+
+# 8. Update
+
+<details>
+<summary><b>updateAtStart(int value)</b></summary>
+
+```cpp
+void updateAtStart(int value)
+{
+    if (isEmpty())
+    {
+        cout << "List is Empty" << endl;
+        return;
+    }
+
+    head->data = value;
+}
+```
+
+### Complexity
+
+- Time: `O(1)`
+- Space: `O(1)`
+
+</details>
+
+---
+
+<details>
+<summary><b>updateAtEnd(int value)</b></summary>
+
+```cpp
+void updateAtEnd(int value)
+{
+    if (isEmpty())
+    {
+        cout << "List is Empty" << endl;
+        return;
+    }
+    Node* temp = head;
+    while (temp->next != NULL)
+    {
+        temp = temp->next;
+    }
+    temp->data = value;
+}
+```
+
+### Complexity
+
+- Time: `O(n)`
+- Space: `O(1)`
+
+</details>
+
+---
+
+<details>
+<summary><b>updateAt(int position, int value)</b></summary>
+
+```cpp
+void updateAt(int position, int value)
+{
+    if (position < 1 || position > size)
+    {
+        cout << "Out of Bounds!" << endl;
+        return;
+    }
+
+    Node* temp = head;
+    for (int i = 1; i < position; i++)
+    {
+        temp = temp->next;
+    }
+    temp->data = value;
+}
+```
+
+### Complexity
+
+- Time: `O(n)`
+- Space: `O(1)`
+
+</details>
+
+---
+
+# 9. Searching
+
+<details>
+<summary><b>search(int value)</b> — Print whether a value exists</summary>
+
+```cpp
+void search(int value)
+{
+    if (isEmpty())
+    {
+        cout << "List is Empty. Element can't be found" << endl;
+        return;
+    }
+
+    Node* temp = head;
+    while (temp != NULL)
+    {
+        if (temp->data == value)
+        {
+            cout << "Element Found in List" << endl;
+            return;
+        }
+        temp = temp->next;
+    }
+    cout << "Element Not Found" << endl;
+}
+```
+
+### Complexity
+
+- Best: `O(1)`
+- Worst: `O(n)`
+- Space: `O(1)`
+
+</details>
+
+---
+
+<details>
+<summary><b>indexOf(int value)</b> — Return the 1-based position <i>(added)</i></summary>
+
+Same linear walk as `search()`, but returns the position instead of only printing — useful when the caller needs the location, not just a yes/no.
+
+```cpp
+int indexOf(int value)
+{
+    Node* temp = head;
+    int position = 1;
+
+    while (temp != NULL)
+    {
+        if (temp->data == value)
+        {
+            return position;
+        }
+        temp = temp->next;
+        position++;
+    }
+
+    return -1;
+}
+```
+
+### Return Value
+
+- Returns 1-based position if found
+- Returns `-1` if not found
+
+### Complexity
+
+- Best: `O(1)`
+- Worst: `O(n)`
+- Space: `O(1)`
+
+</details>
+
+---
