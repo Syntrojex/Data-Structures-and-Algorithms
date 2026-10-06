@@ -495,3 +495,187 @@ After:
 </details>
 
 ---
+
+# 7. Deletion
+
+<details>
+<summary><b>deleteFromStart()</b> — Delete first node</summary>
+
+```cpp
+void deleteFromStart()
+{
+    if (isEmpty())
+    {
+        cout << "LinkedList is Empty" << endl;
+        return;
+    }
+
+    Node* temp = head;
+    head = head->next;
+    delete temp;
+    size--;
+}
+```
+
+### Complexity
+
+- Time: `O(1)`
+- Space: `O(1)`
+
+</details>
+
+---
+
+<details>
+<summary><b>deleteFromEnd()</b> — Delete last node <i>(renamed from deleteFormEnd)</i></summary>
+
+```cpp
+void deleteFromEnd()
+{
+    if (isEmpty())
+    {
+        cout << "List is Empty" << endl;
+        return;
+    }
+
+    if (head->next == NULL)
+    {
+        deleteFromStart();
+        return;
+    }
+
+    Node* temp = head;
+    while (temp->next->next != NULL)
+    {
+        temp = temp->next;
+    }
+
+    Node* temp2 = temp->next;
+    temp->next = NULL;
+    delete temp2;
+    size--;
+}
+```
+
+### Complexity
+
+- Time: `O(n)`
+- Space: `O(1)`
+
+</details>
+
+---
+
+<details>
+<summary><b>deleteAt(int position)</b> — Delete at a 1-based position</summary>
+
+```cpp
+void deleteAt(int position)
+{
+    if (position < 1 || position > size)
+    {
+        cout << "Out of Bounds" << endl;
+        return;
+    }
+
+    if (position == 1)
+    {
+        deleteFromStart();
+        return;
+    }
+
+    if (position == size)
+    {
+        deleteFromEnd();
+        return;
+    }
+
+    Node* temp = head;
+    for (int i = 0; i < position - 1; i++)
+    {
+        temp = temp->next;
+    }
+
+    Node* temp2 = temp->next;
+    temp->next = temp->next->next;
+    delete temp2;
+    size--;
+}
+```
+
+### Example
+
+```text
+Before:
+10 → 20 → 30 → 40
+
+deleteAt(3)
+
+After:
+10 → 20 → 40
+```
+
+### Complexity
+
+- Time: `O(n)`
+- Space: `O(1)`
+
+</details>
+
+---
+
+<details>
+<summary><b>emptyAfter(int position)</b> — Delete every node after a position</summary>
+
+```cpp
+void emptyAfter(int position)
+{
+    if (position < 1 || position >= size)
+    {
+        if (position == size)
+        {
+            return;
+        }
+        cout << "Out of Bounds" << endl;
+        return;
+    }
+
+    Node* temp = head;
+    for (int i = 1; i < position; i++)
+    {
+        temp = temp->next;
+    }
+
+    Node* current = temp->next;
+    temp->next = NULL;
+
+    while (current != NULL)
+    {
+        Node* temp2 = current->next;
+        delete current;
+        current = temp2;
+        size--;
+    }
+}
+```
+
+### Example
+
+```text
+Before:
+10 → 20 → 30 → 40 → 50
+
+emptyAfter(3)
+
+After:
+10 → 20 → 30 → NULL
+```
+
+### Complexity
+
+- Time: `O(n)`
+- Space: `O(1)`
+
+</details>
+
+---
