@@ -377,3 +377,121 @@ void display()
 </details>
 
 ---
+
+# 6. Insertion
+
+<details>
+<summary><b>insertAtStart(int value)</b> — Insert at beginning</summary>
+
+```cpp
+void insertAtStart(int value)
+{
+    Node* newNode = new Node(value);
+    newNode->next = head;
+    head = newNode;
+    size++;
+}
+```
+
+### Dry Run
+
+```text
+Before: 10 → 20 → NULL
+Insert 5
+After:  5 → 10 → 20 → NULL
+```
+
+### Complexity
+
+- Time: `O(1)`
+- Space: `O(1)` excluding the new node
+
+</details>
+
+---
+
+<details>
+<summary><b>insertAtEnd(int value)</b> — Insert at end</summary>
+
+```cpp
+void insertAtEnd(int value)
+{
+    if (isEmpty())
+    {
+        insertAtStart(value);
+        return;
+    }
+
+    Node* newNode = new Node(value);
+    Node* temp = head;
+    while (temp->next != NULL)
+    {
+        temp = temp->next;
+    }
+
+    temp->next = newNode;
+    size++;
+}
+```
+
+### Complexity
+
+- Time: `O(n)`
+- Space: `O(1)` excluding the new node
+
+</details>
+
+---
+
+<details>
+<summary><b>insertAt(int position, int value)</b> — Insert at a 1-based position</summary>
+
+```cpp
+void insertAt(int position, int value)
+{
+    if (position < 1 || position > size + 1)
+    {
+        cout << "Invalid Position! Position must be between 1 and " << size + 1 << endl;
+        return;
+    }
+
+    if (position == 1)
+    {
+        insertAtStart(value);
+        return;
+    }
+
+    Node* temp = head;
+    for (int i = 0; i < position - 1; i++)
+    {
+        temp = temp->next;
+    }
+
+    Node* newNode = new Node(value);
+    newNode->next = temp->next;
+    temp->next = newNode;
+
+    size++;
+}
+```
+
+### Example
+
+```text
+Before:
+10 → 20 → 30
+
+insertAt(2, 15)
+
+After:
+10 → 15 → 20 → 30
+```
+
+### Complexity
+
+- Time: `O(n)`
+- Space: `O(1)` excluding the new node
+
+</details>
+
+---
