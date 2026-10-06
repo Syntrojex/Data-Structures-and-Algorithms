@@ -1166,3 +1166,125 @@ delete 30
 </details>
 
 ---
+
+# 17. Complete Function Checklist
+
+| # | Function | Category |
+|---|---|---|
+| 1 | `Node()` | Node |
+| 2 | `Iterator` (ctor, `*`, `++`, `!=`) | Custom Iterator |
+| 3 | `copyFrom()` | Helper *(added)* |
+| 4 | `clear()` | Helper *(added)* |
+| 5 | `SinglyLinkedList()` | Constructor |
+| 6 | `SinglyLinkedList(const&)` | Copy Constructor *(added)* |
+| 7 | `operator=()` | Copy Assignment *(added)* |
+| 8 | `isEmpty()` | Basic Operation |
+| 9 | `getSize()` | Basic Operation *(added)* |
+| 10 | `display()` | Basic Operation |
+| 11 | `insertAtStart()` | Insertion |
+| 12 | `insertAtEnd()` | Insertion |
+| 13 | `insertAt()` | Insertion |
+| 14 | `deleteFromStart()` | Deletion |
+| 15 | `deleteFromEnd()` | Deletion *(renamed)* |
+| 16 | `deleteAt()` | Deletion |
+| 17 | `emptyAfter()` | Deletion |
+| 18 | `updateAtStart()` | Update |
+| 19 | `updateAtEnd()` | Update |
+| 20 | `updateAt()` | Update |
+| 21 | `search()` | Searching |
+| 22 | `indexOf()` | Searching *(added)* |
+| 23 | `reverse()` | Reversal |
+| 24 | `rotate()` | Rotation |
+| 25 | `findMiddle()` | Find Middle |
+| 26 | `sort()` | Sorting |
+| 27 | `removeDuplicates()` | Duplicate Removal |
+| 28 | `traverse()` | Function-Pointer Traversal |
+| 29 | `~SinglyLinkedList()` | Destructor |
+
+---
+
+# 18. Complexity Cheat Sheet
+
+| Operation | Time |
+|---|---:|
+| `isEmpty()` | `O(1)` |
+| `getSize()` | `O(1)` |
+| `display()` | `O(n)` |
+| `insertAtStart()` | `O(1)` |
+| `insertAtEnd()` | `O(n)` |
+| `insertAt()` | `O(n)` |
+| `deleteFromStart()` | `O(1)` |
+| `deleteFromEnd()` | `O(n)` |
+| `deleteAt()` | `O(n)` |
+| `emptyAfter()` | `O(n)` |
+| `updateAtStart()` | `O(1)` |
+| `updateAtEnd()` | `O(n)` |
+| `updateAt()` | `O(n)` |
+| `search()` | `O(n)` |
+| `indexOf()` | `O(n)` |
+| `reverse()` | `O(n)` |
+| `rotate()` | `O(n)` |
+| `findMiddle()` | `O(n)` |
+| `sort()` | `O(n²)` |
+| `removeDuplicates()` | `O(n²)` |
+| `traverse()` | `O(n)` |
+| Copy Constructor | `O(n)` |
+| Copy Assignment | `O(n)` |
+| Destructor | `O(n)` |
+
+---
+
+# 19. Important Concepts
+
+- `head` points to the first node; `NULL` marks the end of the list.
+- `size` tells you **how many nodes currently exist** — now exposed via `getSize()`.
+- Insertion increases `size`; deletion decreases it.
+- Most positions in this class are **1-based**, not 0-based.
+- `search()` only reports found/not-found; `indexOf()` returns where.
+- `reverse()` rebuilds links using `prev`/`current`/`next` — no extra nodes are allocated.
+- `rotate()` temporarily makes the list circular, then re-breaks it at the new tail.
+- `findMiddle()` uses the classic slow/fast pointer technique.
+- `sort()` is Bubble Sort with an early-exit `swapped` flag.
+- A class that manages raw pointers and defines a destructor should also define (or explicitly delete) a copy constructor and copy assignment operator — the **Rule of Three**.
+
+---
+
+# 20. Operation Categories
+
+### Structure
+- Node
+- Custom Iterator
+- Helper Functions (`copyFrom`, `clear`)
+
+### Construction & Memory
+- Default Constructor
+- Copy Constructor *(added)*
+- Copy Assignment Operator *(added)*
+- Destructor
+
+### Basic Operations
+- `isEmpty()`
+- `getSize()` *(added)*
+- `display()`
+
+### Modification
+- Insertion
+- Deletion
+- Update
+
+### Searching
+- `search()`
+- `indexOf()` *(added)*
+
+### Rearrangement
+- Reverse
+- Rotation
+- Find Middle
+
+### Sorting & Cleanup
+- Sort (Bubble Sort)
+- Remove Duplicates
+
+### Traversal
+- Function-Pointer Traversal
+- Iterator-based Traversal
