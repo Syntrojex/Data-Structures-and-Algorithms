@@ -843,3 +843,154 @@ int indexOf(int value)
 </details>
 
 ---
+
+# 10. Reverse
+
+<details>
+<summary><b>reverse()</b> — Reverse the list in place</summary>
+
+```cpp
+void reverse()
+{
+    Node* prev = NULL;
+    Node* current = head;
+    Node* next2 = NULL;
+
+    while (current != NULL)
+    {
+        next2 = current->next;
+        current->next = prev;
+        prev = current;
+        current = next2;
+    }
+    head = prev;
+}
+```
+
+### Example
+
+```text
+Before:
+10 → 20 → 30 → NULL
+
+After:
+30 → 20 → 10 → NULL
+```
+
+### Complexity
+
+- Time: `O(n)`
+- Space: `O(1)`
+
+</details>
+
+---
+
+# 11. Rotation
+
+<details>
+<summary><b>rotate(int k)</b> — Rotate the list to the right</summary>
+
+```cpp
+void rotate(int k)
+{
+    if (isEmpty() || head->next == NULL || k == 0)
+    {
+        return;
+    }
+
+    k = k % size;
+    if (k == 0)
+    {
+        return;
+    }
+
+    Node* temp = head;
+    while (temp->next != NULL)
+    {
+        temp = temp->next;
+    }
+    temp->next = head;
+
+    int stepsToNewTail = size - k;
+    Node* newTail = head;
+    for (int i = 1; i < stepsToNewTail; i++)
+    {
+        newTail = newTail->next;
+    }
+
+    head = newTail->next;
+    newTail->next = NULL;
+}
+```
+
+### Example
+
+```text
+Original:
+1 → 2 → 3 → 4 → 5
+
+rotate(2)
+
+Result:
+4 → 5 → 1 → 2 → 3
+```
+
+### Note
+
+The last node is temporarily connected to `head`, a new tail is located, and the temporary circular link is broken. `k %= size` prevents unnecessary full rotations.
+
+### Complexity
+
+- Time: `O(n)`
+- Space: `O(1)`
+
+</details>
+
+---
+
+# 12. Find Middle
+
+<details>
+<summary><b>findMiddle()</b> — Slow/fast pointer technique</summary>
+
+```cpp
+int findMiddle()
+{
+    if (isEmpty())
+    {
+        cout << "List is Empty" << endl;
+        return -1;
+    }
+
+    Node* slow = head;
+    Node* fast = head;
+
+    while (fast != NULL && fast->next != NULL)
+    {
+        slow = slow->next;
+        fast = fast->next->next;
+    }
+
+    return slow->data;
+}
+```
+
+### Idea
+
+`slow` moves one node at a time, `fast` moves two. When `fast` reaches the end, `slow` is at the middle. For an even-sized list, this returns the **second middle**.
+
+```text
+10 → 20 → 30 → 40
+          ↑
+        result (30)
+```
+
+### Complexity
+
+- Time: `O(n)`
+- Space: `O(1)`
+
+</details>
+
+---
