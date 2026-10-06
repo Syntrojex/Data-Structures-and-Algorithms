@@ -994,3 +994,175 @@ int findMiddle()
 </details>
 
 ---
+
+# 13. Sorting
+
+<details>
+<summary><b>sort()</b> — Bubble Sort with early exit</summary>
+
+```cpp
+void sort()
+{
+    if (isEmpty() || size == 1)
+    {
+        cout << "Can't Be swapped" << endl;
+        return;
+    }
+
+    bool swapped;
+    do
+    {
+        swapped = false;
+        Node* temp1 = head;
+        Node* temp2 = temp1->next;
+
+        while (temp2 != NULL)
+        {
+            if (temp1->data > temp2->data)
+            {
+                int data = temp1->data;
+                temp1->data = temp2->data;
+                temp2->data = data;
+
+                swapped = true;
+            }
+            temp1 = temp1->next;
+            temp2 = temp2->next;
+        }
+    } while (swapped);
+}
+```
+
+### Example
+
+```text
+Before:
+30 → 10 → 20 → 5
+
+After:
+5 → 10 → 20 → 30
+```
+
+Adjacent values are compared and swapped when necessary; the `swapped` flag lets the loop exit early once a full pass makes no swaps.
+
+### Complexity
+
+- Best: `O(n)`
+- Average/Worst: `O(n²)`
+- Space: `O(1)`
+
+</details>
+
+---
+
+# 14. Duplicate Removal
+
+<details>
+<summary><b>removeDuplicates()</b> — Remove duplicate values</summary>
+
+```cpp
+void removeDuplicates()
+{
+    Node* temp1 = head;
+
+    while (temp1 != NULL)
+    {
+        Node* temp2 = temp1;
+        while (temp2->next != NULL)
+        {
+            if (temp2->next->data == temp1->data)
+            {
+                Node* temp = temp2->next;
+                temp2->next = temp2->next->next;
+                delete temp;
+                size--;
+            }
+            else
+            {
+                temp2 = temp2->next;
+            }
+        }
+        temp1 = temp1->next;
+    }
+}
+```
+
+### Example
+
+```text
+Before:
+10 → 20 → 10 → 30 → 20
+
+After:
+10 → 20 → 30
+```
+
+`temp1` selects a value and `temp2` scans the rest of the list for duplicates of it, keeping the first occurrence.
+
+### Complexity
+
+- Time: `O(n²)`
+- Space: `O(1)`
+
+</details>
+
+---
+
+# 15. Function-Pointer Traversal
+
+<details>
+<summary><b>traverse(void (*func)(int))</b> — Pass every value to a callback</summary>
+
+```cpp
+void traverse(void (*func)(int))
+{
+    Node* temp = head;
+    while (temp != NULL)
+    {
+        func(temp->data);
+        temp = temp->next;
+    }
+}
+```
+
+Demonstrates function pointers together with linked-list traversal.
+
+### Complexity
+
+- Time: `O(n)`
+- Space: `O(1)`
+
+</details>
+
+---
+
+# 16. Destructor
+
+<details>
+<summary><b>~SinglyLinkedList()</b> — Release every node</summary>
+
+```cpp
+~SinglyLinkedList()
+{
+    clear();
+}
+```
+
+Now routed through the shared `clear()` helper instead of repeating the delete loop.
+
+```text
+[10] → [20] → [30] → NULL
+
+delete 10
+delete 20
+delete 30
+```
+
+### Complexity
+
+- Time: `O(n)`
+- Space: `O(1)`
+
+</details>
+
+---
