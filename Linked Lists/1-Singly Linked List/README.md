@@ -89,7 +89,7 @@ cout << *it;
 ---
 
 <details>
-<summary><b>operator++()</b> — Increments Iterator</summary>
+<summary><b>operator++()</b> — Advance</summary>
 
 Moves the iterator to the next node.
 
@@ -123,7 +123,7 @@ it
 <details>
 <summary><b>operator!=(), begin(), end()</b> — Comparison and range endpoints</summary>
 <br>
- 
+
 ```cpp
 bool operator!=(const Iterator& other)
 {
@@ -159,7 +159,7 @@ for (auto it = l1.begin(); it != l1.end(); ++it)
 # 3. Helper Functions
 
 <details>
-<summary><b>copyFrom(const SinglyLinkedList& other)</b> — Deep-copy every node </summary>
+<summary><b>copyFrom(const SinglyLinkedList& other)</b> — Deep-copy every node <i>(added)</i></summary>
 
 ### Purpose
 
@@ -189,7 +189,7 @@ void copyFrom(const SinglyLinkedList& other)
 ---
 
 <details>
-<summary><b>clear()</b> — Free every node </summary>
+<summary><b>clear()</b> — Free every node <i>(added)</i></summary>
 
 ### Purpose
 
@@ -225,6 +225,7 @@ void clear()
 
 <details>
 <summary><b>Default Constructor</b></summary>
+<br>
 
 ```cpp
 SinglyLinkedList()
@@ -299,7 +300,8 @@ SinglyLinkedList& operator=(const SinglyLinkedList& other)
 
 <details>
 <summary><b>isEmpty()</b> — Check whether the list has no nodes</summary>
-
+<br>
+ 
 ```cpp
 bool isEmpty()
 {
@@ -343,7 +345,8 @@ int getSize() const
 
 <details>
 <summary><b>display()</b> — Print every node</summary>
-
+<br>
+ 
 ```cpp
 void display()
 {
@@ -382,7 +385,8 @@ void display()
 
 <details>
 <summary><b>insertAtStart(int value)</b> — Insert at beginning</summary>
-
+<br>
+ 
 ```cpp
 void insertAtStart(int value)
 {
@@ -412,7 +416,8 @@ After:  5 → 10 → 20 → NULL
 
 <details>
 <summary><b>insertAtEnd(int value)</b> — Insert at end</summary>
-
+<br>
+ 
 ```cpp
 void insertAtEnd(int value)
 {
@@ -445,7 +450,8 @@ void insertAtEnd(int value)
 
 <details>
 <summary><b>insertAt(int position, int value)</b> — Insert at a 1-based position</summary>
-
+<br>
+ 
 ```cpp
 void insertAt(int position, int value)
 {
@@ -500,7 +506,8 @@ After:
 
 <details>
 <summary><b>deleteFromStart()</b> — Delete first node</summary>
-
+<br>
+ 
 ```cpp
 void deleteFromStart()
 {
@@ -528,7 +535,8 @@ void deleteFromStart()
 
 <details>
 <summary><b>deleteFromEnd()</b> — Delete last node <i>(renamed from deleteFormEnd)</i></summary>
-
+<br>
+ 
 ```cpp
 void deleteFromEnd()
 {
@@ -568,7 +576,8 @@ void deleteFromEnd()
 
 <details>
 <summary><b>deleteAt(int position)</b> — Delete at a 1-based position</summary>
-
+<br>
+ 
 ```cpp
 void deleteAt(int position)
 {
@@ -626,7 +635,8 @@ After:
 
 <details>
 <summary><b>emptyAfter(int position)</b> — Delete every node after a position</summary>
-
+<br>
+ 
 ```cpp
 void emptyAfter(int position)
 {
@@ -684,7 +694,8 @@ After:
 
 <details>
 <summary><b>updateAtStart(int value)</b></summary>
-
+<br>
+ 
 ```cpp
 void updateAtStart(int value)
 {
@@ -709,7 +720,8 @@ void updateAtStart(int value)
 
 <details>
 <summary><b>updateAtEnd(int value)</b></summary>
-
+<br>
+ 
 ```cpp
 void updateAtEnd(int value)
 {
@@ -738,7 +750,8 @@ void updateAtEnd(int value)
 
 <details>
 <summary><b>updateAt(int position, int value)</b></summary>
-
+<br>
+ 
 ```cpp
 void updateAt(int position, int value)
 {
@@ -770,7 +783,8 @@ void updateAt(int position, int value)
 
 <details>
 <summary><b>search(int value)</b> — Print whether a value exists</summary>
-
+<br>
+ 
 ```cpp
 void search(int value)
 {
@@ -848,7 +862,8 @@ int indexOf(int value)
 
 <details>
 <summary><b>reverse()</b> — Reverse the list in place</summary>
-
+<br>
+ 
 ```cpp
 void reverse()
 {
@@ -890,7 +905,8 @@ After:
 
 <details>
 <summary><b>rotate(int k)</b> — Rotate the list to the right</summary>
-
+<br>
+ 
 ```cpp
 void rotate(int k)
 {
@@ -953,7 +969,8 @@ The last node is temporarily connected to `head`, a new tail is located, and the
 
 <details>
 <summary><b>findMiddle()</b> — Slow/fast pointer technique</summary>
-
+<br>
+ 
 ```cpp
 int findMiddle()
 {
@@ -999,7 +1016,8 @@ int findMiddle()
 
 <details>
 <summary><b>sort()</b> — Bubble Sort with early exit</summary>
-
+<br>
+ 
 ```cpp
 void sort()
 {
@@ -1059,7 +1077,8 @@ Adjacent values are compared and swapped when necessary; the `swapped` flag lets
 
 <details>
 <summary><b>removeDuplicates()</b> — Remove duplicate values</summary>
-
+<br>
+ 
 ```cpp
 void removeDuplicates()
 {
@@ -1112,7 +1131,8 @@ After:
 
 <details>
 <summary><b>traverse(void (*func)(int))</b> — Pass every value to a callback</summary>
-
+<br>
+ 
 ```cpp
 void traverse(void (*func)(int))
 {
@@ -1140,7 +1160,8 @@ Demonstrates function pointers together with linked-list traversal.
 
 <details>
 <summary><b>~SinglyLinkedList()</b> — Release every node</summary>
-
+<br>
+ 
 ```cpp
 ~SinglyLinkedList()
 {
