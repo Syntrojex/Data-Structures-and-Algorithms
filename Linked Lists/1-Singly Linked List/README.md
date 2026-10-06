@@ -294,3 +294,86 @@ SinglyLinkedList& operator=(const SinglyLinkedList& other)
 </details>
 
 ---
+
+# 5. Basic Operations
+
+<details>
+<summary><b>isEmpty()</b> — Check whether the list has no nodes</summary>
+
+```cpp
+bool isEmpty()
+{
+    if (head == NULL)
+    {
+        return true;
+    }
+    return false;
+}
+```
+
+### Complexity
+
+- Time: `O(1)`
+- Space: `O(1)`
+
+</details>
+
+---
+
+<details>
+<summary><b>getSize()</b> — Return the element count <i>(added)</i></summary>
+
+`size` was already tracked internally but had no public getter.
+
+```cpp
+int getSize() const
+{
+    return size;
+}
+```
+
+### Complexity
+
+- Time: `O(1)`
+- Space: `O(1)`
+
+</details>
+
+---
+
+<details>
+<summary><b>display()</b> — Print every node</summary>
+
+```cpp
+void display()
+{
+    if (isEmpty())
+    {
+        cout << "LinkedList is Empty" << endl;
+        return;
+    }
+
+    Node* temp = head;
+    while (temp != NULL)
+    {
+        cout << temp->data << "->";
+        temp = temp->next;
+    }
+    cout << "NULL" << endl;
+}
+```
+
+### Example
+
+```text
+10 → 20 → 30 → NULL
+```
+
+### Complexity
+
+- Time: `O(n)`
+- Space: `O(1)`
+
+</details>
+
+---
