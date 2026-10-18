@@ -3,13 +3,13 @@
 
 using namespace std;
 
-class MaxStack
+class MinStack
 {
 public:
-	stack<int> maxStack;
+	stack<int> minStack;
 	stack<int> mainStack;
 
-	MaxStack()
+	MinStack()
 	{
 		// Stacks automatically empty create ho jayenge
 	}
@@ -21,9 +21,9 @@ public:
 	{
 		mainStack.push(value);
 
-		if (maxStack.empty() || maxStack.top() >= value)
+		if (minStack.empty() || minStack.top() >= value)
 		{
-			maxStack.push(value);
+			minStack.push(value);
 		}
 	}
 
@@ -41,9 +41,9 @@ public:
 		int poppedValue = mainStack.top();
 		mainStack.pop();
 
-		if (poppedValue == maxStack.top())
+		if (poppedValue == minStack.top())
 		{
-			maxStack.pop();
+			minStack.pop();
 		}
 	}
 
@@ -60,21 +60,21 @@ public:
 	}
 
 	// Current minimum value return karta hai
-	int getMax()
+	int getMin()
 	{
-		if (maxStack.empty())
+		if (minStack.empty())
 		{
 			cout << "Stack is Empty" << endl;
 			return -1;
 		}
 
-		return maxStack.top();
+		return minStack.top();
 	}
 };
 
 int main()
 {
-	MaxStack st;
+	MinStack st;
 
 	st.push(5);
 	st.push(3);
@@ -83,17 +83,17 @@ int main()
 	st.push(2);
 
 	cout << "Top: " << st.top() << endl;
-	cout << "Min: " << st.getMax() << endl;
+	cout << "Min: " << st.getMin() << endl;
 
 	st.pop();
 
 	cout << "Top after pop: " << st.top() << endl;
-	cout << "Min after pop: " << st.getMax() << endl;
+	cout << "Min after pop: " << st.getMin() << endl;
 
 	st.pop();
 
 	cout << "Top after pop: " << st.top() << endl;
-	cout << "Min after pop: " << st.getMax() << endl;
+	cout << "Min after pop: " << st.getMin() << endl;
 
 	return 0;
 }
