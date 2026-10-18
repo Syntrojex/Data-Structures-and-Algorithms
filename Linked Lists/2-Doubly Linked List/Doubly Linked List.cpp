@@ -410,21 +410,25 @@ public:
 			return;
 		}
 
+		Node* prev = NULL;
 		Node* current = head;
+		Node* next = NULL;
+
+		Node* oldHead = head;
 
 		while (current != NULL)
 		{
-			Node* temp = current->next;
+			next = current->next;
 
-			current->next = current->prev;
-			current->prev = temp;
+			current->next = prev;
+			current->prev = next;
 
-			current = temp;
+			prev = current;
+			current = next;
 		}
 
-		Node* temp = head;
-		head = tail;
-		tail = temp;
+		head = prev;
+		tail = oldHead;
 	}
 
 	void rotate(int k)
