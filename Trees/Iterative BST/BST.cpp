@@ -169,40 +169,82 @@ public:
 		return temp->data;
 	}
 
-	void remove(int key)
-	{
-		if (root == NULL)
-		{
-			cout << "Tree is Empty" << endl;
-			return;
-		}
-
+	void remove(int key) {
 		Node* current = root;
-		Node* parent = NULL;
+		Node* parent = nullptr;
 
+		// Step 1: Node ko dhoondo aur uska parent track karo
 		while (current != NULL && current->data != key)
 		{
 			parent = current;
-
 			if (key < current->data)
 			{
 				current = current->left;
 			}
-
-			else if (key > current->data)
+			else
 			{
 				current = current->right;
 			}
 		}
 
+		// current wo Node ban jay gi aise jo delete krni ha
+
+		// Agar node mila hi nahi
 		if (current == NULL)
 		{
-			cout << key << "Not Found" << endl;
+			cout << key << " Not Found" << endl;
+			return;
 		}
 
-		// Both Childs exist
-		if (current->left != NULL && current->right != NULL)
+		// ==========================================
+		// CASE 1: Leaf Node (0 Children - Na left hai, na right)
+		// ==========================================
+		if (current->left == NULL && current->right == NULL)
 		{
+			if (parent == NULL)
+			{
+				root = NULL;
+			}
+			else if (parent->left == current)
+			{
+				parent->left = NULL;
+			}
+			else
+			{
+				parent->right = NULL;
+			}
+			delete current;
+		}
+
+		// ==========================================
+		// CASE 2: One Child (Sirf 1 child ho - chahe left ho ya right)
+		// ==========================================
+		else if (current->left == NULL || current->right == NULL)
+		{
+			// Pata lagao ke child kis taraf hai
+			Node* child = (current->left != NULL) ? current->left : current->right;
+
+			if (parent == NULL)
+			{
+				root = child;
+			}
+			else if (parent->left == current)
+			{
+				parent->left = child;
+			}
+			else
+			{
+				parent->right = child;
+			}
+			delete current;
+		}
+
+		// ==========================================
+		// CASE 3: Two Children (Dono children mojood hon)
+		// ==========================================
+		else
+		{
+			// Right subtree ka sabse chota node inorder Successor
 			Node* succParent = current;
 			Node* succ = current->right;
 
@@ -212,37 +254,22 @@ public:
 				succ = succ->left;
 			}
 
+			// Successor ki data ko current node mein copy kar do
 			current->data = succ->data;
-			current = succ;               // now delete successor node
-			parent = succParent;
+
+			// Ab successor node ko link hata kar delete kar do
+			if (succParent->left == succ)
+			{
+				succParent->left = succ->right;
+			}
+			else
+			{
+				succParent->right = succ->right;
+			}
+			delete succ;
 		}
 
-		// Zero or one child
-
-		Node* child;
-		if (current->left != NULL)
-		{
-			child = current->left;
-		}
-		else
-		{
-			current = current->right;
-		}
-
-		if (parent == NULL)
-		{
-			root = child;
-		}
-
-		else if (parent->left == current)
-		{
-			parent->left = child;
-		}
-		else
-		{
-			parent->right = child;
-		}
-		delete current;
+		cout << key << " Successfully Removed!" << endl;
 	}
 };
 
