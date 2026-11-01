@@ -15,7 +15,7 @@ int evaluatePostFix(string exp)
         // stoi() string ko integer mein convert karta hai
         if (ch != '+' && ch != '-' && ch != '*' && ch != '/')
         {
-                st.push(stoi(ch));
+               st.push(ch - '0');
     	}
 
 		// Agar + operator hai toh stack ke top ke 2 operands nikalo
