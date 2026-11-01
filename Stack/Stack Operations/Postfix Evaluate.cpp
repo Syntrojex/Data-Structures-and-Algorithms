@@ -11,12 +11,12 @@ int evaluatePostFix(string exp)
 
 	for (char ch : exp)
 	{
-		// Agar character digit hai toh usay integer mein convert karke
-		// stack mein push kar do
-		if (ch >= '0' && ch <= '9')
-		{
-			st.push(ch - '0');
-		}
+ 		// Agar character operator nahi hai toh ye number hai
+        // stoi() string ko integer mein convert karta hai
+        if (ch != '+' && ch != '-' && ch != '*' && ch != '/')
+        {
+                st.push(stoi(ch));
+    	}
 
 		// Agar + operator hai toh stack ke top ke 2 operands nikalo
 		// aur unko add karke result dobara stack mein push karo
