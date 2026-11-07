@@ -13,6 +13,7 @@ using namespace std;
 
 <details>
 <summary><b>Declare and Initialize</b></summary>
+<br>
 
 ```cpp
 array<int, 5> nums;                  // Uninitialized values
@@ -29,6 +30,7 @@ array<int, 5> nums3{};               // All elements = 0
 
 <details>
 <summary><b>operator[]</b></summary>
+<br>
 
 ```cpp
 cout << nums[0];
@@ -44,6 +46,7 @@ nums[2] = 50;
 
 <details>
 <summary><b>at()</b></summary>
+<br>
 
 ```cpp
 cout << nums.at(2);
@@ -59,6 +62,7 @@ nums.at(1) = 20;
 
 <details>
 <summary><b>front() and back()</b></summary>
+<br>
 
 ```cpp
 cout << nums.front();  // First element
@@ -73,6 +77,7 @@ cout << nums.back();   // Last element
 
 <details>
 <summary><b>size()</b></summary>
+<br>
 
 ```cpp
 cout << nums.size();
@@ -86,6 +91,7 @@ Returns the total number of elements.
 
 <details>
 <summary><b>empty()</b></summary>
+<br>
 
 ```cpp
 if (nums.empty())
@@ -104,6 +110,7 @@ Checks whether the array contains zero elements.
 
 <details>
 <summary><b>fill()</b></summary>
+<br>
 
 ```cpp
 array<int, 5> nums;
@@ -120,6 +127,7 @@ Fills every element with the given value.
 
 <details>
 <summary><b>begin() and end()</b></summary>
+<br>
 
 ```cpp
 for (auto it = nums.begin(); it != nums.end(); it++)
@@ -137,6 +145,7 @@ for (auto it = nums.begin(); it != nums.end(); it++)
 
 <details>
 <summary><b>Range-Based For Loop</b></summary>
+<br>
 
 ```cpp
 for (int x : nums)
@@ -146,6 +155,7 @@ for (int x : nums)
 ```
 
 Use reference when modifying elements:
+<br>
 
 ```cpp
 for (int &x : nums)
@@ -162,6 +172,7 @@ for (int &x : nums)
 
 <details>
 <summary><b>sort()</b></summary>
+<br>
 
 ```cpp
 sort(nums.begin(), nums.end());
@@ -170,6 +181,7 @@ sort(nums.begin(), nums.end());
 Sorts elements in ascending order.
 
 Descending order:
+<br>
 
 ```cpp
 sort(nums.begin(), nums.end(), greater<int>());
@@ -181,6 +193,7 @@ sort(nums.begin(), nums.end(), greater<int>());
 
 <details>
 <summary><b>reverse()</b></summary>
+<br>
 
 ```cpp
 reverse(nums.begin(), nums.end());
@@ -194,6 +207,7 @@ Reverses the elements.
 
 <details>
 <summary><b>find()</b></summary>
+<br>
 
 ```cpp
 auto it = find(nums.begin(), nums.end(), 30);
@@ -212,6 +226,7 @@ Searches for a value.
 
 <details>
 <summary><b>count()</b></summary>
+<br>
 
 ```cpp
 int total = count(nums.begin(), nums.end(), 10);
@@ -225,6 +240,7 @@ Returns how many times a value appears.
 
 <details>
 <summary><b>min_element() and max_element()</b></summary>
+<br>
 
 ```cpp
 int smallest = *min_element(nums.begin(), nums.end());
@@ -239,6 +255,7 @@ Returns iterators to the smallest and largest elements.
 
 <details>
 <summary><b>accumulate()</b></summary>
+<br>
 
 ```cpp
 #include <numeric>
@@ -252,7 +269,7 @@ Calculates the sum of all elements.
 
 </details>
 
-## 7. Important LeetCode Notes
+## 7. Important Notes
 
 - `std::array` has a fixed size.
 - Its size must be known at compile time.
