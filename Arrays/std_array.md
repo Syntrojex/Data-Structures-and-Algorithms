@@ -1,4 +1,4 @@
-# C++ std::array
+# C++ Array (`std::array`)
 
 `std::array` is a fixed-size container that stores elements in contiguous memory.
 
