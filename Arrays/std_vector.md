@@ -1,5 +1,5 @@
 
-# std::vector
+# `std::vector`
 
 A practical reference for the C++ `std::vector`, a dynamic array that automatically manages its size. Covers the most commonly used operations in competitive programming.
 
