@@ -1,5 +1,5 @@
 
-# std::stack
+# `std::stack`
 
 A practical reference for the C++ `std::stack`, a container adapter that follows the LIFO (Last In, First Out) principle. The last element inserted is the first one removed. Covers commonly used operations in competitive programming.
 
